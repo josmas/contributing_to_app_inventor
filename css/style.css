@@ -1,0 +1,250 @@
+@font-face {
+  font-family: "League Gothic";
+  src: url("../fonts/league_gothic-webfont.woff") format("woff"),
+       url("../fonts/league_gothic-webfont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  color-scheme: light;
+  --bg-center: #ffffff;
+  --bg-edge: #f7f2d3;
+  --bg-fallback: #f7f3de;
+  --fg: #333333;
+  --link: #8b743d;
+  --link-hover: #c0a86e;
+  --code-bg: #3f3f3f;
+  --code-fg: #dcdcdc;
+  --code-string: #cc9393;
+  --nav-color: rgba(139, 116, 61, 0.6);
+  --nav-color-hover: #c0a86e;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background-color: var(--bg-fallback);
+  background: radial-gradient(circle at center, var(--bg-center) 0%, var(--bg-edge) 100%);
+  color: var(--fg);
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  overflow: hidden;
+}
+
+.deck {
+  height: 100vh;
+  height: 100dvh;
+  width: 100%;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 4rem 6vw 7rem;
+  text-align: center;
+}
+
+.slide.active {
+  display: flex;
+}
+
+.slide h1,
+.slide h2 {
+  margin: 0;
+  color: var(--fg);
+  font-family: "League Gothic", Impact, sans-serif;
+  font-weight: normal;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.slide h1 {
+  font-size: clamp(3rem, 11vw, 8.5rem);
+  text-shadow:
+    0 1px 0 #cccccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbbbbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaaaaa,
+    0 6px 1px rgba(0, 0, 0, 0.1),
+    0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3),
+    0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25),
+    0 20px 20px rgba(0, 0, 0, 0.15);
+}
+
+.slide h2 {
+  font-size: clamp(2.25rem, 8vw, 4.75rem);
+}
+
+.slide .subtitle {
+  font-family: "League Gothic", Impact, sans-serif;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  font-size: clamp(1.75rem, 6vw, 3.5rem);
+  margin-top: -0.3rem;
+}
+
+.slide p {
+  max-width: 46rem;
+  line-height: 1.5;
+  margin: 0;
+  font-size: clamp(1.15rem, 3.4vw, 2.25rem);
+}
+
+.slide .byline {
+  font-size: clamp(0.95rem, 2.2vw, 1.5rem);
+  margin-top: 0.5rem;
+}
+
+.slide .note {
+  font-size: clamp(0.95rem, 2.4vw, 1.4rem);
+  max-width: 44rem;
+}
+
+.slide a {
+  color: var(--link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.slide a:hover {
+  color: var(--link-hover);
+}
+
+.slide code {
+  font-family: "Consolas", "Menlo", "Monaco", monospace;
+}
+
+.slide p > code,
+.slide .note code {
+  background: rgba(139, 116, 61, 0.12);
+  color: var(--link);
+  padding: 0.1rem 0.4rem;
+  border-radius: 0.2rem;
+  font-size: 0.85em;
+}
+
+.slide pre {
+  display: block;
+  width: 90%;
+  max-width: 50rem;
+  margin: 0.15rem auto;
+  background: var(--code-bg);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  text-align: left;
+}
+
+.slide pre code {
+  display: block;
+  color: var(--code-fg);
+  padding: 0.6rem 0.9rem;
+  font-size: clamp(0.85rem, 2.6vw, 1.24rem);
+  line-height: 1.3;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.slide img {
+  margin: 0.5rem 0;
+  border: 4px solid var(--fg);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+}
+
+.slide .license {
+  color: var(--fg);
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.slide .license img {
+  border: 0;
+  box-shadow: none;
+  vertical-align: middle;
+  margin-right: 0.4rem;
+  margin-top: 0;
+}
+
+.deck-nav {
+  position: fixed;
+  right: calc(1.5rem + env(safe-area-inset-right, 0px));
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 10;
+}
+
+.deck-nav button {
+  background: transparent;
+  color: var(--nav-color);
+  border: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.deck-nav button:not(:disabled):hover {
+  color: var(--nav-color-hover);
+}
+
+.deck-nav button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.slide-counter {
+  min-width: 3rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: var(--nav-color);
+  font-size: 0.8rem;
+}
+
+.progress-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: var(--link);
+  transition: width 0.4s ease;
+}
+
+@media (max-width: 480px) {
+  .slide {
+    padding: 3rem 1.25rem 6rem;
+  }
+}

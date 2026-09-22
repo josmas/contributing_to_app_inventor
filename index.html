@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Contributing to App Inventor 2</title>
+  <meta name="description" content="Contributing to App Inventor 2 through GitHub">
+  <meta name="author" content="Jose Dominguez">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/zenburn.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <main class="deck">
+
+    <section class="slide" data-slide="1">
+      <h1>Contributing through github</h1>
+      <h2 class="subtitle">App Inventor 2</h2>
+      <p class="byline">
+        Created by <a href="https://twitter.com/josmasflores">Jose Dominguez</a>
+        / <a href="https://twitter.com/josmasflores">@josmasflores</a>
+      </p>
+    </section>
+
+    <section class="slide" data-slide="2">
+      <h2>Not familiar with github?</h2>
+      <p><a href="https://try.github.com">try.github.com</a></p>
+    </section>
+
+    <section class="slide" data-slide="3">
+      <h2>Fork the Repo</h2>
+      <p>
+        <a href="https://github.com/mit-cml/appinventor-sources">
+          https://github.com/mit-cml/appinventor-sources
+        </a>
+      </p>
+      <p class="note">Use the "Fork" button on GitHub to create your own copy of the repository.</p>
+    </section>
+
+    <section class="slide" data-slide="4">
+      <h2>clone locally</h2>
+      <pre><code>git clone https://github.com/YOUR_USER_NAME/appinventor-sources.git</code></pre>
+      <p class="note">Clones your fork of the repository into the current directory. Swap <code>YOUR_USER_NAME</code> for your real GitHub username.</p>
+    </section>
+
+    <section class="slide" data-slide="5">
+      <h2>configure remotes</h2>
+      <pre><code>$ cd appinventor-sources</code></pre>
+      <pre><code>$ git remote add upstream https://github.com/mit-cml/appinventor-sources.git</code></pre>
+    </section>
+
+    <section class="slide" data-slide="6">
+      <h2>.gitignore</h2>
+      <pre><code>$ cp sample-.gitignore .gitignore</code></pre>
+      <p class="note">If you don't do this, you will get in all kinds of trouble.</p>
+    </section>
+
+    <section class="slide" data-slide="7">
+      <h2>Checkout Dependencies</h2>
+      <pre><code>$ git submodule update --init</code></pre>
+      <p class="note">If you want to make changes to Blockly, make sure you follow the instructions in the main repository README file.</p>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <h2>Create AuthKey</h2>
+      <pre><code>$ cd appinventor</code></pre>
+      <pre><code>$ ant MakeAuthKey</code></pre>
+      <p class="note">Check out the instructions in the main repository README file if you want to make your key persistent.</p>
+    </section>
+
+    <section class="slide" data-slide="9">
+      <h2>build app inventor 2</h2>
+      <pre><code>$ ant</code></pre>
+    </section>
+
+    <section class="slide" data-slide="10">
+      <h2>run app inventor 2</h2>
+      <pre><code>$ google-cloud-SDK-folder/bin/java_dev_appserver.sh \
+    --port=8888 --address=0.0.0.0 appengine/build/war/</code></pre>
+      <p class="note">
+        You will need to download the
+        <a href="https://cloud.google.com/appengine/docs/standard/java/download">Cloud SDK | App Engine for Java</a>.
+        These paths are relative to your AppEngine installation.
+      </p>
+    </section>
+
+    <section class="slide" data-slide="11">
+      <h2>run the build server</h2>
+      <pre><code>$ cd appinventor/buildserver</code></pre>
+      <pre><code>$ ant RunLocalBuildServer</code></pre>
+      <p class="note">The build server is needed to create apk files.</p>
+    </section>
+
+    <section class="slide" data-slide="12">
+      <h2>you are now ready to go!</h2>
+      <p>Navigate to <a href="http://localhost:8888">localhost:8888</a></p>
+      <p>
+        Check out the
+        <a href="https://docs.google.com/document/d/1hIvAtbNx-eiIJcTA2LLPQOawctiGIpnnt0AvfgnKBok/pub">App Inventor Developer Overview</a>
+        for more information about the overall architecture of the system.
+      </p>
+    </section>
+
+    <section class="slide" data-slide="13">
+      <h1>THE END</h1>
+      <p>
+        Feel free to contact the
+        <a href="https://groups.google.com/forum/#!forum/app-inventor-open-source-dev">Open Source</a>
+        group for any additional information.
+      </p>
+      <p class="license">
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">
+          <img alt="Creative Commons License" src="https://i.creativecommons.org/l/by/3.0/88x31.png">
+        </a>
+        <br>
+        This work is licensed under a
+        <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a>.
+      </p>
+    </section>
+
+  </main>
+
+  <nav class="deck-nav">
+    <button type="button" id="prev-btn" aria-label="Previous slide">&#9664;</button>
+    <span id="slide-counter" class="slide-counter"></span>
+    <button type="button" id="next-btn" aria-label="Next slide">&#9654;</button>
+  </nav>
+
+  <div class="progress-bar"><span id="progress-fill"></span></div>
+
+  <script src="js/vendor/highlight.js"></script>
+  <script>
+    if (window.hljs) {
+      document.querySelectorAll("pre code").forEach(function (block) {
+        hljs.highlightBlock(block);
+      });
+    }
+  </script>
+  <script src="js/slides.js"></script>
+</body>
+</html>
