@@ -20,14 +20,14 @@
       <h1>Contributing through github</h1>
       <h2 class="subtitle">App Inventor 2</h2>
       <p class="byline">
-        Created by <a href="https://twitter.com/josmasflores">Jose Dominguez</a>
+        Created by <a href="https://github.com/josmas">Jose Dominguez</a>
         / <a href="https://twitter.com/josmasflores">@josmasflores</a>
       </p>
     </section>
 
     <section class="slide" data-slide="2">
       <h2>Not familiar with github?</h2>
-      <p><a href="https://try.github.com">try.github.com</a></p>
+      <p><a href="https://docs.github.com/en/get-started">Get started with GitHub</a></p>
     </section>
 
     <section class="slide" data-slide="3">
@@ -61,37 +61,37 @@
     <section class="slide" data-slide="7">
       <h2>Checkout Dependencies</h2>
       <pre><code>$ git submodule update --init</code></pre>
-      <p class="note">If you want to make changes to Blockly, make sure you follow the instructions in the main repository README file.</p>
     </section>
 
     <section class="slide" data-slide="8">
       <h2>Create AuthKey</h2>
       <pre><code>$ cd appinventor</code></pre>
       <pre><code>$ ant MakeAuthKey</code></pre>
-      <p class="note">Check out the instructions in the main repository README file if you want to make your key persistent.</p>
+    </section>
+
+    <section class="slide" data-slide="8">
+      <h2>Install PostgreSQL</h2>
+      <p class="note">You can run it directly on your machine or use this <a href="https://gist.github.com/josmas/336ef409e0b82fdbd9d480bf2b2aa0d8">gist</a> to run as a container.</p>
+      <p class="note">If not using the gist, the default database name is <i>appinventor_db</i>, username <i>appinventor</i> and password <i>appinventor</i>.</p>
     </section>
 
     <section class="slide" data-slide="9">
       <h2>build app inventor 2</h2>
       <pre><code>$ ant</code></pre>
+      <pre><code>$ ant -Dskip.ios=true # if you are on mac and want to save time</code></pre>
     </section>
 
     <section class="slide" data-slide="10">
       <h2>run app inventor 2</h2>
-      <pre><code>$ google-cloud-SDK-folder/bin/java_dev_appserver.sh \
-    --port=8888 --address=0.0.0.0 appengine/build/war/</code></pre>
-      <p class="note">
-        You will need to download the
-        <a href="https://cloud.google.com/appengine/docs/standard/java/download">Cloud SDK | App Engine for Java</a>.
-        These paths are relative to your AppEngine installation.
-      </p>
+      <pre><code>$ cd appinventor </code></pre>
+      <pre><code>$ ant devserver </code></pre>
     </section>
 
     <section class="slide" data-slide="11">
       <h2>run the build server</h2>
       <pre><code>$ cd appinventor/buildserver</code></pre>
       <pre><code>$ ant RunLocalBuildServer</code></pre>
-      <p class="note">The build server is needed to create apk files.</p>
+      <p class="note">The build server is used to create apk/aab files.</p>
     </section>
 
     <section class="slide" data-slide="12">
@@ -99,8 +99,8 @@
       <p>Navigate to <a href="http://localhost:8888">localhost:8888</a></p>
       <p>
         Check out the
-        <a href="https://docs.google.com/document/d/1hIvAtbNx-eiIJcTA2LLPQOawctiGIpnnt0AvfgnKBok/pub">App Inventor Developer Overview</a>
-        for more information about the overall architecture of the system.
+        <a href="https://community.appinventor.mit.edu/c/open-source-development/10">App Inventor Open Source Community</a>
+        for more information, troubleshooting and help.
       </p>
     </section>
 
